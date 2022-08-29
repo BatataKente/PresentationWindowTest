@@ -17,10 +17,10 @@ class View_1: UIViewController {
         
         let handler = {(action: UIAction) in
             
-            self.scrollView.showLikeAWindow(size: CGSize(width: button.frame.size.width,
-                                                         height: 100),
-                                            origin: self.view.center,
-                                            .alert)
+//            self.scrollView.showLikeAWindow(size: CGSize(width: button.frame.size.width,
+//                                                         height: 100),
+//                                            origin: self.view.center,
+//                                            .alert)
         }
         
         button.addAction(UIAction(handler: handler), for: .touchUpInside)

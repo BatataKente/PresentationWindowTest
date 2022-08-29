@@ -94,17 +94,17 @@ extension UIView {
 ///   - constant: The distance from attribute
 ///   - multiplier: Multiplier for constant
     func constraintTo(_ attribute: NSLayoutConstraint.Attribute,
-                           _ toItem: Any?,
-                           _ constant: CGFloat = 0,
-                           multiplier: CGFloat = 1) {
+                      _ toItem: Any?,
+                      _ constant: CGFloat = 0,
+                      multiplier: CGFloat = 1) -> NSLayoutConstraint {
         
-        superview?.addConstraint(NSLayoutConstraint(item: self,
-                                                    attribute: attribute,
-                                                    relatedBy: .equal,
-                                                    toItem: toItem,
-                                                    attribute: attribute,
-                                                    multiplier: multiplier,
-                                                    constant: constant))
+        NSLayoutConstraint(item: self,
+                           attribute: attribute,
+                           relatedBy: .equal,
+                           toItem: toItem,
+                           attribute: attribute,
+                           multiplier: multiplier,
+                           constant: constant)
     }
     
 /// This function creates the constraint of a view in a superview directed to some other view with reference to the same part. example bottom to bottom
@@ -191,70 +191,93 @@ extension UIView {
 ///   - size: The size of the window
 ///   - origin: The origin of the window
 ///   - orientation: The orientation to show the window
+//    func showLikeAWindow(size: CGSize,
+//                         origin: CGPoint,
+//                         _ orientation: Orientation = .downRight) {
+//
+//        self.frame.origin = origin
+//
+//        let timing: (duration: CGFloat,
+//                     delay: CGFloat) = (duration: 0.3,
+//                                        delay: 0.1)
+//
+//        if self.frame.size == .zero {
+//
+//            switch orientation {
+//
+//                case .downLeft:
+//
+//                    UIView.animate(withDuration: timing.duration,
+//                                   delay: timing.delay) {
+//
+//                        self.frame.origin.x -= size.width
+//                        self.frame.size = size
+//                    }
+//
+//                case .downRight:
+//
+//                    UIView.animate(withDuration: timing.duration,
+//                                   delay: timing.delay) {
+//
+//                        self.frame.size = size
+//                    }
+//
+//                case .upLeft:
+//
+//                    UIView.animate(withDuration: timing.duration,
+//                                   delay: timing.delay) {
+//
+//                        self.frame.origin.x -= size.width
+//                        self.frame.origin.y -= size.height
+//                        self.frame.size = size
+//                    }
+//
+//                case .upRight:
+//
+//                    UIView.animate(withDuration: timing.duration,
+//                                   delay: timing.delay) {
+//
+//                        self.frame.origin.y -= size.height
+//                        self.frame.size = size
+//                    }
+//
+//                default:
+//
+//                    UIView.animate(withDuration: timing.duration,
+//                                   delay: timing.delay) {
+//
+//                        self.frame.origin.x -= size.width/2
+//                        self.frame.origin.y -= size.height/2
+//                        self.frame.size = size
+//                    }
+//            }
+//        }
+//        else {
+//
+//            self.frame.size = .zero
+//        }
+//    }
+    
+    
+/// This Functions shows an view like a window
+/// - Parameters:
+///   - size: The size of the window
+///   - origin: The origin of the window
+///   - orientation: The orientation to show the window
     func showLikeAWindow(size: CGSize,
-                         origin: CGPoint,
+                         height: NSLayoutConstraint,
+                         width: NSLayoutConstraint,
                          _ orientation: Orientation = .downRight) {
         
-        self.frame.origin = origin
-        
         let timing: (duration: CGFloat,
-                     delay: CGFloat) = (duration: 0.3,
-                                        delay: 0.1)
+                     delay: CGFloat) = (duration: 0.6,
+                                        delay: 0.15)
         
-        if self.frame.size == .zero {
+        UIWindow.animate(withDuration: timing.duration,
+                         delay: timing.delay) {
             
-            switch orientation {
-                
-                case .downLeft:
-                
-                    UIView.animate(withDuration: timing.duration,
-                                   delay: timing.delay) {
-
-                        self.frame.origin.x -= size.width
-                        self.frame.size = size
-                    }
-                
-                case .downRight:
-                    
-                    UIView.animate(withDuration: timing.duration,
-                                   delay: timing.delay) {
-
-                        self.frame.size = size
-                    }
-                
-                case .upLeft:
-                
-                    UIView.animate(withDuration: timing.duration,
-                                   delay: timing.delay) {
-
-                        self.frame.origin.x -= size.width
-                        self.frame.origin.y -= size.height
-                        self.frame.size = size
-                    }
-                
-                case .upRight:
-                
-                    UIView.animate(withDuration: timing.duration,
-                                   delay: timing.delay) {
-
-                        self.frame.origin.y -= size.height
-                        self.frame.size = size
-                    }
-                
-                default:
-                
-                    UIView.animate(withDuration: timing.duration,
-                                   delay: timing.delay) {
-
-                        self.frame.origin.x -= size.width/2
-                        self.frame.origin.y -= size.height/2
-                        self.frame.size = size
-                    }
-            }
-        }
-        else {
-            
-            self.frame.size = .zero
+            height.constant = size.height
+            width.constant = size.width
         }
     }
 }
