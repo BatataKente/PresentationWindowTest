@@ -36,11 +36,11 @@ class View_5: UIViewController {
         
         super.viewDidLoad()
         
-        button.constraintInsideTo(.centerX, view)
-        button.constraintInsideTo(.centerY, view)
+        button.constraintInsideTo_Old(.centerX, view)
+        button.constraintInsideTo_Old(.centerY, view)
         
-        window.constraintOutsideTo(.top, button)
-        window.constraintInsideTo(.trailing, button)
+        window.constraintOutsideTo_Old(.top, button)
+        window.constraintInsideTo_Old(.trailing, button)
         window.sizeAnchorInSuperview(0)
         
         button.subviews[0].backgroundColor = .black

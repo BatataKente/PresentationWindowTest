@@ -16,9 +16,9 @@ extension UIButton {
         self.backgroundColor = backgroundColor
         
         self.heightAnchorInSuperview(50)
-        self.constraintInsideTo(.leading, superview?.safeAreaLayoutGuide)
-        self.constraintInsideTo(.trailing, superview?.safeAreaLayoutGuide)
-        self.constraintOutsideTo(.bottom, superview?.keyboardLayoutGuide)
+        self.constraintInsideTo_Old(.leading, superview?.safeAreaLayoutGuide)
+        self.constraintInsideTo_Old(.trailing, superview?.safeAreaLayoutGuide)
+        self.constraintOutsideTo_Old(.bottom, superview?.keyboardLayoutGuide)
         
         self.titleLabel?.font = UIFont.systemFont(ofSize: 25,
                                                   weight: .bold)
@@ -207,7 +207,7 @@ extension UIButton {
         
         self.addAction(UIAction(handler: handler), for: .touchUpInside)
         
-        self.constraintInsideTo(.centerX, self.superview)
-        self.constraintInsideTo(.centerY, self.superview, (self.superview?.frame.size.height)!/4)
+        self.constraintInsideTo_Old(.centerX, self.superview)
+        self.constraintInsideTo_Old(.centerY, self.superview, (self.superview?.frame.size.height)!/4)
     }
 }

@@ -14,11 +14,11 @@ extension UIScrollView {
         let view = UIView()
         self.addSubview(view)
         
-        view.constraintInsideTo(.top, self.contentLayoutGuide)
-        view.constraintInsideTo(.leading, self.contentLayoutGuide)
-        view.constraintInsideTo(.trailing, self.contentLayoutGuide)
-        view.constraintInsideTo(.bottom, self.contentLayoutGuide)
-        view.constraintInsideTo(.width, self.frameLayoutGuide)
+        view.constraintInsideTo_Old(.top, self.contentLayoutGuide)
+        view.constraintInsideTo_Old(.leading, self.contentLayoutGuide)
+        view.constraintInsideTo_Old(.trailing, self.contentLayoutGuide)
+        view.constraintInsideTo_Old(.bottom, self.contentLayoutGuide)
+        view.constraintInsideTo_Old(.width, self.frameLayoutGuide)
         
         let stackView = UIStackView(arrangedSubviews: views)
         stackView.axis = .vertical
@@ -26,9 +26,9 @@ extension UIScrollView {
         
         view.addSubview(stackView)
         
-        stackView.constraintInsideTo(.top, view)
-        stackView.constraintInsideTo(.leading, view)
-        stackView.constraintInsideTo(.trailing, view)
-        stackView.constraintInsideTo(.bottom, view)
+        stackView.constraintInsideTo_Old(.top, view)
+        stackView.constraintInsideTo_Old(.leading, view)
+        stackView.constraintInsideTo_Old(.trailing, view)
+        stackView.constraintInsideTo_Old(.bottom, view)
     }
 }

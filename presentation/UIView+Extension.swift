@@ -81,10 +81,10 @@ extension UIView {
 /// - Parameter constant: The margins of view to superview
     func fillSuperview(_ constant: CGFloat = 0) {
         
-        self.constraintInsideTo(.top, superview?.safeAreaLayoutGuide, constant)
-        self.constraintInsideTo(.leading, superview?.safeAreaLayoutGuide, constant)
-        self.constraintInsideTo(.trailing, superview?.safeAreaLayoutGuide, constant)
-        self.constraintInsideTo(.bottom, superview?.safeAreaLayoutGuide, constant)
+        self.constraintInsideTo_Old(.top, superview?.safeAreaLayoutGuide, constant)
+        self.constraintInsideTo_Old(.leading, superview?.safeAreaLayoutGuide, constant)
+        self.constraintInsideTo_Old(.trailing, superview?.safeAreaLayoutGuide, constant)
+        self.constraintInsideTo_Old(.bottom, superview?.safeAreaLayoutGuide, constant)
     }
     
 /// This function creates the constraint of a view in a superview directed to some other view
@@ -93,19 +93,19 @@ extension UIView {
 ///   - toItem: The item at the other point of the constraint
 ///   - constant: The distance from attribute
 ///   - multiplier: Multiplier for constant
-    func constraintTo(_ attribute: NSLayoutConstraint.Attribute,
-                      _ toItem: Any?,
-                      _ constant: CGFloat = 0,
-                      multiplier: CGFloat = 1) -> NSLayoutConstraint {
-        
-        NSLayoutConstraint(item: self,
-                           attribute: attribute,
-                           relatedBy: .equal,
-                           toItem: toItem,
-                           attribute: attribute,
-                           multiplier: multiplier,
-                           constant: constant)
-    }
+//    func constraintTo(_ attribute: NSLayoutConstraint.Attribute,
+//                      _ toItem: Any?,
+//                      _ constant: CGFloat = 0,
+//                      multiplier: CGFloat = 1) -> NSLayoutConstraint {
+//
+//        NSLayoutConstraint(item: self,
+//                           attribute: attribute,
+//                           relatedBy: .equal,
+//                           toItem: toItem,
+//                           attribute: attribute,
+//                           multiplier: multiplier,
+//                           constant: constant)
+//    }
     
 /// This function creates the constraint of a view in a superview directed to some other view with reference to the same part. example bottom to bottom
 /// - Parameters:
@@ -113,7 +113,7 @@ extension UIView {
 ///   - toItem: The item at the other point of the constraint
 ///   - constant: The distance from attribute
 ///   - multiplier: Multiplier for constant
-    func constraintInsideTo(_ attribute: NSLayoutConstraint.Attribute,
+    func constraintInsideTo_Old(_ attribute: NSLayoutConstraint.Attribute,
                                  _ toItem: Any?,
                                  _ constant: CGFloat = 0,
                                  multiplier: CGFloat = 1) {
@@ -146,7 +146,7 @@ extension UIView {
 ///   - toItem: The item at the other point of the constraint
 ///   - constant: The distance from item attribute
 ///   - multiplier: Multiplier for constant
-    func constraintOutsideTo(_ attribute: NSLayoutConstraint.Attribute,
+    func constraintOutsideTo_Old(_ attribute: NSLayoutConstraint.Attribute,
                                   _ toItem: Any?,
                                   _ constant: CGFloat = 0,
                                   multiplier: CGFloat = 1) {
@@ -191,79 +191,6 @@ extension UIView {
 ///   - size: The size of the window
 ///   - origin: The origin of the window
 ///   - orientation: The orientation to show the window
-//    func showLikeAWindow(size: CGSize,
-//                         origin: CGPoint,
-//                         _ orientation: Orientation = .downRight) {
-//
-//        self.frame.origin = origin
-//
-//        let timing: (duration: CGFloat,
-//                     delay: CGFloat) = (duration: 0.3,
-//                                        delay: 0.1)
-//
-//        if self.frame.size == .zero {
-//
-//            switch orientation {
-//
-//                case .downLeft:
-//
-//                    UIView.animate(withDuration: timing.duration,
-//                                   delay: timing.delay) {
-//
-//                        self.frame.origin.x -= size.width
-//                        self.frame.size = size
-//                    }
-//
-//                case .downRight:
-//
-//                    UIView.animate(withDuration: timing.duration,
-//                                   delay: timing.delay) {
-//
-//                        self.frame.size = size
-//                    }
-//
-//                case .upLeft:
-//
-//                    UIView.animate(withDuration: timing.duration,
-//                                   delay: timing.delay) {
-//
-//                        self.frame.origin.x -= size.width
-//                        self.frame.origin.y -= size.height
-//                        self.frame.size = size
-//                    }
-//
-//                case .upRight:
-//
-//                    UIView.animate(withDuration: timing.duration,
-//                                   delay: timing.delay) {
-//
-//                        self.frame.origin.y -= size.height
-//                        self.frame.size = size
-//                    }
-//
-//                default:
-//
-//                    UIView.animate(withDuration: timing.duration,
-//                                   delay: timing.delay) {
-//
-//                        self.frame.origin.x -= size.width/2
-//                        self.frame.origin.y -= size.height/2
-//                        self.frame.size = size
-//                    }
-//            }
-//        }
-//        else {
-//
-//            self.frame.size = .zero
-//        }
-//    }
-    
-    
-/// This Functions shows an view like a window
-/// - Parameters:
-///   - size: The size of the window
-///   - origin: The origin of the window
-///   - orientation: The orientation to show the window
     func showLikeAWindow(size: CGSize,
                          height: NSLayoutConstraint,
                          width: NSLayoutConstraint,
@@ -292,6 +219,95 @@ extension UIView {
         for view in views {
             
             self.addSubview(view)
+        }
+    }
+}
+
+extension UIView {
+    
+    func createContraint(item: UIView,
+                         attribute: NSLayoutConstraint.Attribute,
+                         relatedBy: NSLayoutConstraint.Relation = .equal,
+                         toItem: UIView,
+                         attribute ofItemAttribute: NSLayoutConstraint.Attribute? = nil,
+                         multiplier: CGFloat? = nil,
+                         constant: CGFloat? = nil) -> NSLayoutConstraint {
+        
+        if let ofItemAttribute = ofItemAttribute {
+            
+            let constraint = NSLayoutConstraint(item: item,
+                                                attribute: attribute,
+                                                relatedBy: relatedBy,
+                                                toItem: toItem,
+                                                attribute: ofItemAttribute,
+                                                multiplier: multiplier ?? 1,
+                                                constant: constant ?? 0)
+            return constraint
+        }
+        let constraint = NSLayoutConstraint(item: item,
+                                            attribute: attribute,
+                                            relatedBy: relatedBy,
+                                            toItem: toItem,
+                                            attribute: attribute,
+                                            multiplier: multiplier ?? 1,
+                                            constant: constant ?? 0)
+        return constraint
+    }
+    
+    func constraint(to: UIView,
+                    by: NSLayoutConstraint.Attribute,
+                    _ itemAttribute: NSLayoutConstraint.Attribute? = nil,
+                    multiplier: CGFloat? = nil,
+                    constant: CGFloat? = nil) {
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
+        superview?.addConstraint(createContraint(item: self,
+                                                 attribute: by,
+                                                 toItem: to,
+                                                 attribute: itemAttribute,
+                                                 multiplier: multiplier,
+                                                 constant: constant))
+    }
+    
+    func shape(height: CGFloat? = nil, width: CGFloat? = nil, size: CGFloat? = nil) {
+        
+        if let size = size {
+            
+            self.heightAnchor.constraint(equalToConstant: size).isActive = true
+            self.widthAnchor.constraint(equalToConstant: size).isActive = true
+        }
+        else if let height = height,
+                let width = width {
+            
+            self.heightAnchor.constraint(equalToConstant: height).isActive = true
+            self.widthAnchor.constraint(equalToConstant: width).isActive = true
+        }
+        else if let height = height {
+            
+            self.heightAnchor.constraint(equalToConstant: height).isActive = true
+        }
+        else if let width = width {
+            
+            self.widthAnchor.constraint(equalToConstant: width).isActive = true
+        }
+    }
+    
+    func tie(to: UIView,
+             multiplier: CGFloat? = nil,
+             constant: CGFloat? = nil,
+             attributes: [(NSLayoutConstraint.Attribute)]) {
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
+            
+        for attribute in attributes {
+            
+            superview?.addConstraint(createContraint(item: self,
+                                                     attribute: attribute,
+                                                     toItem: to,
+                                                     attribute: attribute,
+                                                     multiplier: multiplier,
+                                                     constant: constant))
         }
     }
 }
