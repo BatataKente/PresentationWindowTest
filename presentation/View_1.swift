@@ -12,18 +12,6 @@ class View_1: UIViewController {
     private lazy var button: UIButton = {
         
         let button = UIButton()
-        button.setTitleColor(UIColor.black, for: .normal)
-        button.backgroundColor = .green
-        
-        let handler = {(action: UIAction) in
-            
-//            self.scrollView.showLikeAWindow(size: CGSize(width: button.frame.size.width,
-//                                                         height: 100),
-//                                            origin: self.view.center,
-//                                            .alert)
-        }
-        
-        button.addAction(UIAction(handler: handler), for: .touchUpInside)
         
         return button
     }()
@@ -82,11 +70,13 @@ class View_1: UIViewController {
         
         view.addSubviews([button, presentButton, scrollView])
         
-        presentButton.constraintInsideTo(.centerX, view)
-        presentButton.constraintInsideTo(.top, view, view.frame.size.height/4)
+        view.subviews[1].constraintInsideTo(.centerX, view)
+        view.subviews[1].constraintInsideTo(.top, view, view.frame.size.height/4)
         
-        button.constraintInsideTo(.centerX, view)
-        button.constraintInsideTo(.centerY, view, view.frame.size.height/4)
+//        presentButton.constraintInsideTo(.centerX, view)
+//        presentButton.constraintInsideTo(.top, view, view.frame.size.height/4)
+        
+        button.setLeroLero()
         
 //        scrollView.constraintOutsideTo(.top, button)
 //        scrollView.constraintInsideTo(.leading, button)

@@ -22,6 +22,14 @@ class View_2: UIViewController {
         
         return button
     }()
+    
+    let label: UILabel = {
+        
+        let label = UILabel()
+        label.text = "Lero Lero"
+        
+        return label
+    }()
 
     override func viewDidLoad() {
         
@@ -34,7 +42,7 @@ class View_2: UIViewController {
                                                             target: self,
                                                             action: #selector(dismiss))
         
-        view.addSubview(button)
+        view.addSubviews([button, label])
         view.addConstraints([
         
             NSLayoutConstraint(item: button,
@@ -57,6 +65,8 @@ class View_2: UIViewController {
     @objc private func buttonTarget(_ sender: UIButton) {
         
         let view_3 = View_3()
+        
+        sender.backgroundColor = .purple
         
         navigationController?.pushViewController(view_3, animated: true)
     }

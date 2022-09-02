@@ -192,3 +192,22 @@ extension UIButton {
         self.addAction(UIAction(handler: handler), for: .touchUpInside)
     }
 }
+
+extension UIButton {
+    
+    func setLeroLero() {
+        
+        self.setTitleColor(UIColor.black, for: .normal)
+        self.backgroundColor = .green
+        
+        let handler = {(action: UIAction) in
+            
+            print("Lero Lero")
+        }
+        
+        self.addAction(UIAction(handler: handler), for: .touchUpInside)
+        
+        self.constraintInsideTo(.centerX, self.superview)
+        self.constraintInsideTo(.centerY, self.superview, (self.superview?.frame.size.height)!/4)
+    }
+}

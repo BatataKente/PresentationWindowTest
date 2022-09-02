@@ -21,6 +21,7 @@
 		147BA88028A7F143006924C8 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147BA87F28A7F143006924C8 /* UIView+Extension.swift */; };
 		147BA88228A814D0006924C8 /* OrientationEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147BA88128A814D0006924C8 /* OrientationEnum.swift */; };
 		147BA88628A81F2E006924C8 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147BA88528A81F2E006924C8 /* UIButton+Extension.swift */; };
+		148D464E28C2959500F6E1C3 /* View_6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148D464D28C2959500F6E1C3 /* View_6.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		147BA87F28A7F143006924C8 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Extension.swift"; path = "presentation/UIView+Extension.swift"; sourceTree = "<group>"; };
 		147BA88128A814D0006924C8 /* OrientationEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationEnum.swift; sourceTree = "<group>"; };
 		147BA88528A81F2E006924C8 /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIButton+Extension.swift"; path = "presentation/UIButton+Extension.swift"; sourceTree = "<group>"; };
+		148D464D28C2959500F6E1C3 /* View_6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View_6.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				140BD9A628A5AFE300D82EAF /* View_3.swift */,
 				1476F07A28A857F800313913 /* View_4.swift */,
 				143E084828BCD2EC00A13752 /* View_5.swift */,
+				148D464D28C2959500F6E1C3 /* View_6.swift */,
 			);
 			path = presentation;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 				147BA88028A7F143006924C8 /* UIView+Extension.swift in Sources */,
 				147542B828A51FC00037E1BC /* View_1.swift in Sources */,
 				147542B428A51FC00037E1BC /* AppDelegate.swift in Sources */,
+				148D464E28C2959500F6E1C3 /* View_6.swift in Sources */,
 				147542B628A51FC00037E1BC /* SceneDelegate.swift in Sources */,
 				147BA88628A81F2E006924C8 /* UIButton+Extension.swift in Sources */,
 				147542C828A520610037E1BC /* View_2.swift in Sources */,
